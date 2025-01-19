@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Guessing game</title>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../dist/normalize.css">
+</head>
+<body class="h-dvh">
+    <h1 class="w-full m-0 bg-white font-bold text-3xl text-center h-16 fixed left-0 top-0 z-10 pt-3"></h1>
+    <section class="h-dvh guessing-game bg-slate-200  p-12 flex justify-between">
+        <div class="game-area w-3/5 flex flex-col h-fit mt-16">
+            <div class="tries flex flex-col w-full grow space-y-3">
+                <!-- <div id="try" class="try space-x-3 justify-between h-20 opacity-50 w-full flex items-center">
+                    <span class="font-bold text-2xl w-16">Try 1</span>
+                    <ul class="w-full h-full letters flex space-x-3">
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-green-300">C</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">P</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">E</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-green-300">B</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">M</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">Z</li>
+                    </ul>
+                </div> -->
+                <div id="try" class="try space-x-3 justify-between h-20 opacity-50 w-full flex items-center">
+                    <span class="font-bold text-2xl w-16">Try 2</span>
+                    <ul class="w-full h-full letters flex space-x-3">
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-green-300">C</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">P</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">E</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-green-300">B</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">M</li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-slate-400">Z</li>
+                    </ul>
+                </div>
+                <div id="try" class="try space-x-3 justify-between h-20 w-full flex items-center">
+                    <span class="font-bold text-2xl w-16">Try 1</span>
+                    <ul class="w-full h-full letters flex space-x-3">
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text"></li>
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
+                        <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
+                    </ul>
+                </div>
+                <!-- <div id="try" class="try space-x-3 justify-between h-20 opacity-50 w-full flex items-center">
+                    <span class="font-bold text-2xl w-16">Try 4</span>
+                    <ul class="w-full h-full letters flex space-x-3">
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                    </ul>
+                </div>
+                <div id="try" class="try space-x-3 justify-between h-20 opacity-50 w-full flex items-center">
+                    <span class="font-bold text-2xl w-16">Try 5</span>
+                    <ul class="w-full h-full letters flex space-x-3">
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                        <li class="letter text-white w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"></li>
+                    </ul>
+                </div> -->
+            </div>
+            <div class="buttons my-6 w-full flex px-16 h-16">
+                <button id="check" class="check px-4 py-3 bg-red-500 rounded-md text-white font-bold text-lg text-center">Check Word</button>
+                <button id="hint" class="hint px-4 py-3 ml-6 bg-green-600 rounded-md text-white font-bold text-lg text-center"><span></span> Hint</button>
+            </div>
+        </div>
+        <div class="key-colors w-2/5 flex-col space-y-9 h-[500px] mt-16">
+            <h2 class="text-center w-full font-bold text-3xl">Key Colors</h2>
+            <div class="yellow-key w-full h-14 items-center flex space-x-3 p-4 bg-white">
+                <span class="w-8 h-8 bg-yellow-400 border-solid border-slate-400 border-2"></span>
+                <p class="font-bold text-xl">Letter is Right and in Place</p>
+            </div>
+            <div class="green-key flex w-full h-14 items-center space-x-3 p-4 bg-white">
+                <span class="w-8 h-8 bg-green-500 border-solid border-slate-400 border-2"></span>
+                <p class="font-bold text-xl">Letter is Right and not in Place</p>
+            </div>
+            <div class="grey-key w-full h-14 items-center flex space-x-3 p-4 bg-white">
+                <span class="w-8 h-8 bg-slate-600 border-solid border-slate-400 border-2"></span >
+                <p class="font-bold text-xl">Letter is wrong</p>
+            </div>
+            
+        </div>
+    </section>
+    <script src="../dist/main.js"></script>
+</body>
+</html>
