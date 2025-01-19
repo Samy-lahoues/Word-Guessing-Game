@@ -1,11 +1,11 @@
 // Select Dom elements
 const triesContainer = document.getElementById("tries");
 const check = document.getElementById("check");
-const hint = document.getElementById("hint");
+const hintBtn = document.getElementById("hint");
 let gameName = "Guess The Word";
 document.title = gameName;
 document.querySelector("body > h1").innerHTML = gameName;
-let tries = document.querySelectorAll("#try");
+let tries = document.querySelectorAll(".try");
 
 // Setting game options
 let numberOfTries = 5;
@@ -17,12 +17,14 @@ let randomNum = Math.floor(Math.random() * words.length)
 let wordToGuess = words[randomNum];
 console.log(wordToGuess)
 let wordToGuessArray = wordToGuess.split("");
+// Manage hints
+hint
 // create try and add new try
 function addTry () {
     let newTry = '';
     newTry += `
     <div id="try" class="try space-x-3 justify-between h-20 w-full flex items-center">
-        <span class="font-bold text-2xl w-16">Try 1</span>
+        <span class="font-bold text-2xl w-16">Try ${currentTry}</span>
         <ul class="w-full h-full letters flex space-x-3">
             <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text"></li>
             <li class="letter overflow-hidden relative text-black w-20 h-full text-center font-medium text-6xl pt-3 text-wihte bg-white border-solid border-black border-b-2"><input maxlength="1" class="w-full absolute left-0 top-1 border-none outline-none text-center" type="text" readonly></li>
@@ -64,27 +66,35 @@ check.addEventListener("click", () => {
     }
     else{
         for (let i = 0; i < wordToGuessArray.length; i++){
-            currentInput[i].parentElement.innerHTML = currentInput[i].value;
-            currentInput[i].parentElement.style.color = "white";
             if (wordToGuess.includes(currentWordArray[i].toLowerCase())){
                 currentInput[i].parentElement.style.backgroundColor = "green";
+                currentInput[i].parentElement.style.borderBottom = "none";
+                currentInput[i].style.backgroundColor = "green";
+                console.log(wordToGuessArray[i].toLowerCase(), currentWordArray[i].toLowerCase())
                 if (wordToGuessArray[i].toLowerCase() === currentWordArray[i].toLowerCase()){
                     currentInput[i].parentElement.style.backgroundColor = "yellow";
                     currentInput[i].parentElement.style.borderBottom = "none";
+                    currentInput[i].style.backgroundColor = "yellow";
                 }
             }
             else{
                 currentInput[i].parentElement.style.backgroundColor = "grey";
                 currentInput[i].parentElement.style.borderBottom = "none";
                 currentInput[i].style.backgroundColor = "grey";
-                currentInput[i].parentElement.style.color = "white";
             }
-            currentInput[i].style.display = "none";
         }
     }
     if (currentTry !== numberOfTries && currentWordArray.join("") !== wordToGuess){
-        addTry()
+        tries[currentTry - 1].querySelectorAll("li").forEach((liElement, index) => {
+            liElement.textContent = currentWordArray[index];
+            liElement.classList.remove("text-black")
+            liElement.classList.add("text-white");
+        });
+        tries[currentTry - 1].querySelectorAll("input").forEach(inputElement => {
+            inputElement.style.display = "none";
+        })
         currentTry++;
+        addTry()
     }
     else if (currentTry === numberOfTries){
         alert("You Lost");
