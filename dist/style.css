@@ -868,3 +868,13 @@ body{
 .hint{
   width: 160px;
 }
+
+ul > li{
+  padding-top: 0.4rem;
+}
+
+.single-letter::-webkit-inner-spin-button,
+.single-letter::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
