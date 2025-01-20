@@ -1,7 +1,7 @@
 // Select Dom elements
 const triesContainer = document.getElementById("tries");
 const check = document.getElementById("check");
-const hintBtn = document.getElementById("hint");
+const hintBtn = document.getElementById("hintBtn");
 let gameName = "Guess The Word";
 document.title = gameName;
 document.querySelector("body > h1").innerHTML = gameName;
@@ -60,6 +60,11 @@ function addEventListenersToTries() {
                 if (index !== letters.length - 1){
                     if (!array[index + 1].classList.contains("hint")){
                         let nextLetter = letters[index + 1];
+                        nextLetter.removeAttribute("readonly");
+                        nextLetter.focus();
+                    }
+                    else if ((index + 2) !== (letters.length - 1) && (index + 3) !== (letters.length) && array[index + 1].classList.contains("hint") && array[index + 2].classList.contains("hint")){
+                        let nextLetter = letters[index + 3];
                         nextLetter.removeAttribute("readonly");
                         nextLetter.focus();
                     }
@@ -130,15 +135,24 @@ hintBtn.onclick = () => {
     if (numberOfHints > 0){
         let randomIndex = Math.floor(Math.random() * wordToGuessArray.length)
         let randomLetter = wordToGuessArray[randomIndex];
-        const hintInput = tries[currentTry - 1].querySelectorAll(".letter input");
-        hintInput[randomIndex].classList.add("hint");
-        hintInput[randomIndex].value = randomLetter;
-        hintInput[randomIndex].style.backgroundColor = "yellow";
-        hintInput[randomIndex].style.width = "100%";
-        hintInput[randomIndex].parentElement.style.backgroundColor = "yellow";
-        hintInput[randomIndex].parentElement.style.borderBottom = "none";
+        const inputs = tries[currentTry - 1].querySelectorAll(".letter input");
+        inputs[randomIndex].classList.add("hint");
+        inputs[randomIndex].setAttribute("readonly", "true")
+        inputs[randomIndex].value = randomLetter;
+        if (inputs[randomIndex + 1]){
+            inputs[randomIndex + 1].removeAttribute("readonly")
+        }
+        inputs[randomIndex].style.backgroundColor = "yellow";
+        inputs[randomIndex].parentElement.style.backgroundColor = "yellow";
+        inputs[randomIndex].parentElement.style.borderBottom = "none";
         numberOfHints--;
         updateHints();
+        for (let i = 0; i < wordToGuessArray.length; i++){
+            if (!inputs[i].classList.contains("hint")){
+                inputs[i].focus();
+                break;
+            }
+        }
     }
     else{
         alert("You have no more hints");
